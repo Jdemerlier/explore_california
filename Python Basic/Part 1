@@ -375,7 +375,6 @@ print(os.path.isfile('main.py'))
 # For 32 bit it will return 32 and for 64 bit it will return 64
 import struct
 print(struct.calcsize("P") * 8)
-"""
 
 #43.
 import os
@@ -388,3 +387,31 @@ print("platform.system()           ", platform.system())
 print("sysconfig.get_platform()    ", sysconfig.get_platform())
 print("platform.machine()          ", platform.machine())
 print("platform.architecture()     ", platform.architecture())
+
+#44.
+import site; 
+print(site.getsitepackages())
+
+#45.
+from subprocess import call
+call(["ls", "-l"])
+
+#46.
+import os
+print("Current File Name : ",os.path.realpath(__file__))
+
+#47.
+import multiprocessing
+print(multiprocessing.cpu_count())
+
+#48.
+from os import listdir
+from os.path import isfile, join
+files_list = [f for f in listdir('Nieuwe map\gittest\Python Basic') if isfile(join('Nieuwe map\gittest\Python Basic', f))]
+print(files_list);
+"""
+
+#49.
+n = "246.2458"
+print(float(n))
+print(int(float(n)))
