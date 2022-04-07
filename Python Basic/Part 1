@@ -419,10 +419,320 @@ print(int(float(n)))
 for i in range(0, 10):
     print('*', end="")
 print("\n")
-"""
 
 #51. 
 import cProfile
 def sum():
     print(1+2)
 cProfile.run('sum()')
+
+#52.
+from __future__ import print_function
+import sys
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+eprint("abc", "efg", "xyz", sep="--")
+
+
+#53.
+import os
+# Access all environment variables 
+print('*----------------------------------*')
+print(os.environ)
+print('*----------------------------------*')
+# Access a particular environment variable 
+print(os.environ['HOME'])
+print('*----------------------------------*')
+print(os.environ['PATH'])
+print('*----------------------------------*')
+
+#54.
+import getpass
+print(getpass.getuser())
+
+#55.
+import socket
+print([l for l in ([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] 
+if not ip.startswith("127.")][:1], [[(s.connect(('8.8.8.8', 53)), 
+s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, 
+socket.SOCK_DGRAM)]][0][1]]) if l][0][0])
+
+#56.
+def terminal_size():
+    import fcntl, termios, struct
+    th, tw, hp, wp = struct.unpack('HHHH',
+        fcntl.ioctl(0, termios.TIOCGWINSZ,
+        struct.pack('HHHH', 0, 0, 0, 0)))
+    return tw, th
+
+print('Number of columns and Rows: ',terminal_size())
+
+#57.
+import time
+def sum_of_n_numbers(n):
+    start_time = time.time()
+    s = 0
+    for i in range(1,n+1):
+        s = s + i
+    end_time = time.time()
+    return s,end_time-start_time
+
+n = 5
+print("\nTime to sum of 1 to ",n," and required time to calculate is :",sum_of_n_numbers(n))
+
+#58.
+n = int(input("Input a number: "))
+sum_num = (n * (n + 1)) / 2
+print("Sum of the first", n ,"positive integers:", sum_num)
+
+#59.
+print("Input your height: ")
+h_ft = int(input("Feet: "))
+h_inch = int(input("Inches: "))
+
+h_inch += h_ft * 12
+h_cm = round(h_inch * 2.54, 1)
+
+print("Your height is : %d cm." % h_cm)
+
+#60.
+from math import sqrt
+print("Input lengths of shorter triangle sides:")
+a = float(input("a: "))
+b = float(input("b: "))
+c = sqrt(a**2 + b**2)
+print("The length of the hypotenuse is:", c )
+
+#61.
+d_ft = int(input("Input distance in feet: "))
+d_inches = d_ft * 12
+d_yards = d_ft / 3.0
+d_miles = d_ft / 5280.0
+
+print("The distance in inches is %i inches." % d_inches)
+print("The distance in yards is %.2f yards." % d_yards)
+print("The distance in miles is %.2f miles." % d_miles)
+
+#62.
+days = int(input("Input days: ")) * 3600 * 24
+hours = int(input("Input hours: ")) * 3600
+minutes = int(input("Input minutes: ")) * 60
+seconds = int(input("Input seconds: "))
+
+time = days + hours + minutes + seconds
+
+print("The  amounts of seconds", time)
+
+#63.
+days = int(input("Input days: ")) * 3600 * 24
+hours = int(input("Input hours: ")) * 3600
+minutes = int(input("Input minutes: ")) * 60
+seconds = int(input("Input seconds: "))
+
+time = days + hours + minutes + seconds
+
+print("The  amounts of seconds", time)
+
+#64.
+def absolute_file_path(path_fname):
+        import os
+        return os.path.abspath('path_fname')        
+print("Absolute file path: ",absolute_file_path("test.txt"))
+
+#65.
+time = float(input("Input time in seconds: "))
+day = time // (24 * 3600)
+time = time % (24 * 3600)
+hour = time // 3600
+time %= 3600
+minutes = time // 60
+time %= 60
+seconds = time
+print("d:h:m:s-> %d:%d:%d:%d" % (day, hour, minutes, seconds))
+
+#66.
+height = float(input("Input your height in Feet: "))
+weight = float(input("Input your weight in Kilogram: "))
+print("Your body mass index is: ", round(weight / (height * height), 2))
+
+#67.
+kpa = float(input("Input pressure in in kilopascals> "))
+psi = kpa / 6.89475729
+mmhg = kpa * 760 / 101.325
+atm = kpa / 101.325
+print("The pressure in pounds per square inch: %.2f psi"  % (psi))
+print("The pressure in millimeter of mercury: %.2f mmHg" % (mmhg))
+print("Atmosphere pressure: %.2f atm." % (atm))
+
+#68.
+num = int(input("Input a four digit numbers: "))
+x  = num //1000
+x1 = (num - x*1000)//100
+x2 = (num - x*1000 - x1*100)//10
+x3 = num - x*1000 - x1*100 - x2*10
+print("The sum of digits in the number is", x+x1+x2+x3)
+
+#69.
+x = int(input("Input first number: "))
+y = int(input("Input second number: "))
+z = int(input("Input third number: "))
+
+a1 = min(x, y, z)
+a3 = max(x, y, z)
+a2 = (x + y + z) - a1 - a3
+print("Numbers in sorted order: ", a1, a2, a3)
+
+#70.
+import glob
+import os
+
+files = glob.glob("*.txt")
+files.sort(key=os.path.getmtime)
+print("\n".join(files))
+
+#71.
+from stat import S_ISREG, ST_CTIME, ST_MODE
+import os, sys, time
+
+#Relative or absolute path to the directory
+dir_path = sys.argv[1] if len(sys.argv) == 2 else r'.'
+
+#all entries in the directory w/ stats
+data = (os.path.join(dir_path, fn) for fn in os.listdir(dir_path))
+data = ((os.stat(path), path) for path in data)
+
+# regular files, insert creation date
+data = ((stat[ST_CTIME], path)
+           for stat, path in data if S_ISREG(stat[ST_MODE]))
+
+for cdate, path in sorted(data):
+    print(time.ctime(cdate), os.path.basename(path))
+
+
+#72.
+# Imports the math module
+import math            
+#Sets everything to a list of math module
+math_ls = dir(math) # 
+print(math_ls)
+
+#73.
+print('\nCalculate the midpoint of a line :')
+
+x1 = float(input('The value of x (the first endpoint) '))
+y1 = float(input('The value of y (the first endpoint) '))
+
+x2 = float(input('The value of x (the first endpoint) '))
+y2 = float(input('The value of y (the first endpoint) '))
+
+x_m_point = (x1 + x2)/2
+y_m_point = (y1 + y2)/2
+print();
+print("The midpoint of line is :")
+print( "The midpoint's x value is: ",x_m_point)
+print( "The midpoint's y value is: ",y_m_point)
+print();
+
+#74.
+soundex=[0,1,2,3,0,1,2,0,0,2,2,4,5,5,0,1,2,6,2,3,0,1,0,2,0,2]
+ 
+word=input("Input the word be hashed: ")
+ 
+word=word.upper()
+ 
+coded=word[0]
+ 
+for a in word[1:len(word)]:
+    i=65-ord(a)
+    coded=coded+str(soundex[i])
+print() 
+print("The coded word is: "+coded)
+print()
+
+#75.
+import sys
+print("\nPython Copyright Information")
+print(sys.copyright)
+print()
+
+#76.
+import sys
+print("This is the name/path of the script:"),sys.argv[0]
+print("Number of arguments:",len(sys.argv))
+print("Argument List:",str(sys.argv))
+
+#77.
+import sys
+print()
+if sys.byteorder == "little":
+    #intel, alpha
+    print("Little-endian platform.")
+else:
+    #motorola, sparc
+    print("Big-endian platform.")
+print()
+
+#78.
+import sys
+import textwrap
+module_name = ', '.join(sorted(sys.builtin_module_names))
+print(textwrap.fill(module_name, width=70))
+
+#79.
+import sys
+str1 = "one"
+str2 = "four"
+str3 = "three"
+x = 0
+y = 112
+z = 122.56
+print("Size of ",str1,"=",str(sys.getsizeof(str1))+ " bytes")
+print("Size of ",str2,"=",str(sys.getsizeof(str2))+ " bytes")
+print("Size of ",str3,"=",str(sys.getsizeof(str3))+ " bytes")
+print("Size of",x,"=",str(sys.getsizeof(x))+ " bytes")
+print("Size of" ,y,"="+str(sys.getsizeof(y))+ " bytes")
+L = [1, 2, 3, 'Red', 'Black']
+print("Size of",L,"=",sys.getsizeof(L)," bytes")
+T = ("Red", [8, 4, 6], (1, 2, 3))
+print("Size of",T,"=",sys.getsizeof(T)," bytes")
+S = {'apple', 'orange', 'apple', 'pear'}
+print("Size of",S,"=",sys.getsizeof(S)," bytes")
+D = {'Name': 'David', 'Age': 6, 'Class': 'First'}
+print("Size of",D,"=",sys.getsizeof(S)," bytes")
+
+#80.
+import sys
+print()
+print("Current value of the recursion limit:")
+print(sys.getrecursionlimit())
+print()
+
+
+#81.
+list_of_colors = ['Red', 'White', 'Black']  
+colors = '-'.join(list_of_colors)
+print()
+print("All Colors: "+colors)
+print()
+
+#82.
+s = sum([10,20,30])
+print("\nSum of the container: ", s)
+print()
+
+#83.
+num = [2, 3, 4, 5]
+print()
+print(all(x > 1 for x in num))
+print(all(x > 4 for x in num))
+print()
+"""
+
+#84.
+s = "The quick brown fox jumps over the lazy dog."  
+print("Original string:")
+print(s)
+print("Number of occurrence of 'o' in the said string:")
+print(s.count("o"))
