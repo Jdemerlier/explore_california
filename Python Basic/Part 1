@@ -409,9 +409,20 @@ from os import listdir
 from os.path import isfile, join
 files_list = [f for f in listdir('Nieuwe map\gittest\Python Basic') if isfile(join('Nieuwe map\gittest\Python Basic', f))]
 print(files_list);
-"""
 
 #49.
 n = "246.2458"
 print(float(n))
 print(int(float(n)))
+
+#50.
+for i in range(0, 10):
+    print('*', end="")
+print("\n")
+"""
+
+#51. 
+import cProfile
+def sum():
+    print(1+2)
+cProfile.run('sum()')
