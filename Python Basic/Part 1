@@ -357,7 +357,6 @@ int = 3.5
 years = 7
 future_value = amt*((1+(0.01*int)) ** years)
 print(round(future_value,2))
-"""
 
 #40.
 import math
@@ -371,3 +370,9 @@ print(distance)
 import os.path
 print(os.path.isfile('main.txt'))
 print(os.path.isfile('main.py'))
+"""
+
+#42.
+# For 32 bit it will return 32 and for 64 bit it will return 64
+import struct
+print(struct.calcsize("P") * 8)
