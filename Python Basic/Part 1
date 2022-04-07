@@ -332,8 +332,10 @@ print(test('5','6'))
 #37.
 fName = input("What is your first name?:")
 lName = input("What is your last name?:")
-Address = input("What is your adress?")
-
+Street = input("What is your street?:")
+HouseNumber = input("What is your house Number?")
+Postcode = input("What is your postcode?")
+City = input("What is your City?")
 Age = int(input("What is your age?:"))
 
-print("Name: {} " " {}\nAge: {}\nAddress: {}".format(fName ,lName, Age, Address))
+print("Name: {} " " {}\nAge: {}\nAddress: {} " " {} " " {}" " {}".format(fName ,lName, Age, Street, HouseNumber, Postcode, City))
