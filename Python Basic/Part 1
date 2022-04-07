@@ -327,16 +327,16 @@ print(test(10,20))
 print(test(10,20.23))
 print(test('5',6))
 print(test('5','6'))
-
+"""
 
 #37.
-fName = input("What is your first name?:")
-lName = input("What is your last name?:")
-Street = input("What is your street?:")
-HouseNumber = input("What is your HouseNumber?")
-Postcode = input("What is your postcode?")
-City = input("What is your City?")
-Age = int(input("What is your age?:"))
+fName = input("What is your first name?: ")
+lName = input("What is your last name?: ")
+Street = input("What is your street?: ")
+HouseNumber = int(input("What is your HouseNumber? "))
+Postcode = input("What is your postcode? ")
+City = input("What is your City? ")
+Age = int(input("What is your age?: "))
 
 print("Name: {} " " {}\nAge: {}\nAddress: {} " " {} " " {}" " {}".format(fName ,lName, Age, Street, HouseNumber, Postcode, City))
 """
@@ -350,3 +350,4 @@ print(z(10,20))
 x, y = 10, 20
 result = x * x + 2 * x * y + y * y
 print("({} + {}) ^ 2) = {}".format(x, y, result))
+"""
