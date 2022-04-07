@@ -327,7 +327,6 @@ print(test(10,20))
 print(test(10,20.23))
 print(test('5',6))
 print(test('5','6'))
-"""
 
 #37.
 fName = input("What is your first name?: ")
@@ -339,7 +338,7 @@ City = input("What is your City? ")
 Age = int(input("What is your age?: "))
 
 print("Name: {} " " {}\nAge: {}\nAddress: {} " " {} " " {}" " {}".format(fName ,lName, Age, Street, HouseNumber, Postcode, City))
-"""
+
 
 #38.
 def z(x,y):
@@ -351,3 +350,10 @@ x, y = 10, 20
 result = x * x + 2 * x * y + y * y
 print("({} + {}) ^ 2) = {}".format(x, y, result))
 """
+
+#39.
+amt = 10000
+int = 3.5
+years = 7
+future_value = amt*((1+(0.01*int)) ** years)
+print(round(future_value,2))
