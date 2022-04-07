@@ -333,7 +333,6 @@ fName = input("What is your first name?: ")
 lName = input("What is your last name?: ")
 Street = input("What is your street?: ")
 HouseNumber = int(input("What is your HouseNumber? "))
-Postcode = input("What is your postcode? ")
 City = input("What is your City? ")
 Age = int(input("What is your age?: "))
 
@@ -728,7 +727,6 @@ print()
 print(all(x > 1 for x in num))
 print(all(x > 4 for x in num))
 print()
-"""
 
 #84.
 s = "The quick brown fox jumps over the lazy dog."  
@@ -736,3 +734,260 @@ print("Original string:")
 print(s)
 print("Number of occurrence of 'o' in the said string:")
 print(s.count("o"))
+
+#85.
+import os  
+path="abc.txt"  
+if os.path.isdir(path):  
+    print("\nIt is a directory")  
+elif os.path.isfile(path):  
+    print("\nIt is a normal file")  
+else:  
+    print("It is a special file (socket, FIFO, device file)" )
+print()
+
+#86.
+print()
+print(ord('a'))
+print(ord('A'))
+print(ord('1'))
+print(ord('@'))
+print()
+
+#87.
+import os
+file_size = os.path.getsize("abc.txt")
+print("\nThe size of abc.txt is :",file_size,"Bytes")
+print()
+
+#88.
+x = 30
+y = 20
+print("\n%d+%d=%d" % (x, y, x+y))
+print()
+
+#89.
+n=1
+if n == 1:
+   print("\nFirst day of a Month!")
+print()
+
+#90.
+def file_copy(src, dest):
+    with open(src) as f, open(dest, 'w') as d:
+        d.write(f.read())
+        file_copy("untitled0.py", "z.py")
+        with open('z.py', 'r') as filehandle:
+            for line in filehandle:
+                print(line, end = '')
+
+#91.
+a = 30
+b = 20
+print("\nBefore swap a = %d and b = %d" %(a, b))
+a, b = b, a
+print("\nAfter swaping a = %d and b = %d" %(a, b))
+print()
+
+#92.
+
+
+#93.
+x = 34
+print("\nIdentity: ",x)
+print("\nType: ",type(x))
+print("\nValue: ",id(x))
+
+#94.
+x = b'Abc'
+print()
+print("\nConvert bytes of the said string to a list of integers:")
+print(list(x))
+print()
+
+#95.
+str = 'a123'
+#str = '123'
+try:
+    i = float(str)
+except (ValueError, TypeError):
+    print('\nNot numeric')
+print()
+
+#96.
+import traceback
+print()
+def f1():return abc()
+def abc():traceback.print_stack()
+f1()
+print()
+
+
+#97.
+s_var_names = sorted((set(globals().keys()) | set(__builtins__.__dict__.keys())) - set('_ names i'.split()))
+print()
+print( '\n'.join(' '.join(s_var_names[i:i+8]) for i in range(0, len(s_var_names), 8)) )
+print()
+
+#98.
+import time
+print()
+print(time.ctime())
+print()
+
+
+#99.
+import os
+import time
+# for windows
+# os.system('cls')
+os.system("cls")
+#time.sleep(2)
+
+#100.
+import ClearScreen
+import socket
+host_name = socket.gethostname()
+print("Host name:", host_name)
+
+#101.
+import ClearScreen
+from http.client import HTTPConnection
+conn = HTTPConnection("example.com")
+conn.request("GET", "/")  
+result = conn.getresponse()
+# retrieves the entire contents.  
+contents = result.read() 
+print(contents)
+
+#101.
+import ClearScreen
+import subprocess
+# file and directory listing
+returned_text = subprocess.check_output("dir", shell=True, universal_newlines=True)
+print("dir command to list file and directory")
+print(returned_text)
+
+#102.
+import ClearScreen
+import subprocess
+# file and directory listing
+returned_text = subprocess.check_output("dir", shell=True, universal_newlines=True)
+print("dir command to list file and directory")
+print(returned_text)
+
+#103.
+import ClearScreen
+import os
+print()
+print(os.path.basename('/users/system1/student1/homework-1.py'))
+print()
+
+#104.
+import ClearScreen
+import os
+print("\nEffective group id: ",os.getegid())
+print("Effective user id: ",os.geteuid())
+print("Real group id: ",os.getgid())
+print("List of supplemental group ids: ",os.getgroups())
+print()
+
+#105.
+import ClearScreen
+import os
+print()
+print(os.environ)
+print()
+
+#106.
+import ClearScreen
+import os.path
+for path in [ 'test.txt', 'filename', '/user/system/test.txt', '/', '' ]:
+    print('"%s" :' % path, os.path.splitext(path))
+
+
+#107.
+import ClearScreen
+import os.path
+import time
+
+print('File         :', __file__)
+print('Access time  :', time.ctime(os.path.getatime(__file__)))
+print('Modified time:', time.ctime(os.path.getmtime(__file__)))
+print('Change time  :', time.ctime(os.path.getctime(__file__)))
+print('Size         :', os.path.getsize(__file__))
+
+#108.
+import ClearScreen
+import os.path
+
+for file in [ __file__, os.path.dirname(__file__), '/', './broken_link']:
+    print('File        :', file)
+    print('Absolute    :', os.path.isabs(file))
+    print('Is File?    :', os.path.isfile(file))
+    print('Is Dir?     :', os.path.isdir(file))
+    print('Is Link?    :', os.path.islink(file))
+    print('Exists?     :', os.path.exists(file))
+    print('Link Exists?:', os.path.lexists(file))
+
+#109.
+import ClearScreen
+num = float(input("Input a number: "))
+if num > 0:
+   print("It is positive number")
+elif num == 0:
+   print("It is Zero")
+else:
+   print("It is a negative number")
+
+#110.
+import ClearScreen
+num_list = [45, 55, 60, 37, 100, 105, 220]
+# use anonymous function to filter
+result = list(filter(lambda x: (x % 15 == 0), num_list))
+print("Numbers divisible by 15 are",result)
+
+#111.
+import ClearScreen
+import glob
+file_list = glob.glob('*.*')
+print(file_list)
+#Specific files
+print(glob.glob('*.py'))
+print(glob.glob('./[0-9].*'))
+
+#112.
+import ClearScreen
+color = ["Red", "Black", "Green", "White", "Orange"]
+print("Original list elements:")
+print(color)
+del color[0]
+print("After removing the first color:")
+print(color)
+
+#113.
+import ClearScreen
+while True:
+    try:
+        a = int(input("Input a number: "))
+        break
+    except ValueError:
+        print("\nThis is not a number. Try again...")
+        print()
+
+#114.
+import ClearScreen
+nums = [34, 1, 0, -23, 12, -88]
+print("Original numbers in the list: ",nums)
+new_nums = list(filter(lambda x: x >0, nums))
+print("Positive numbers in the said list: ",new_nums)
+"""
+
+#115.
+import ClearScreen
+from functools import reduce
+nums = [10, 20, 30,]
+print("Original list numbers:")
+print(nums)
+nums_product = reduce( (lambda x, y: x * y), nums)
+print("\nProduct of the said numbers (without using for loop):",nums_product)
