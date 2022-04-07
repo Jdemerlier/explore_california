@@ -349,7 +349,7 @@ print(z(10,20))
 x, y = 10, 20
 result = x * x + 2 * x * y + y * y
 print("({} + {}) ^ 2) = {}".format(x, y, result))
-"""
+
 
 #39.
 amt = 10000
@@ -357,3 +357,12 @@ int = 3.5
 years = 7
 future_value = amt*((1+(0.01*int)) ** years)
 print(round(future_value,2))
+"""
+
+#40.
+import math
+p1 = [4, 0]
+p2 = [6, 6]
+distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
+
+print(distance)
