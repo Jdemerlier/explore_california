@@ -1250,7 +1250,6 @@ elif type(x) is tuple:
     print('x is a tuple')    
 else:
     print('Neither a list or a set or a tuple.')
-"""
 
 #146.
 import ClearScreen
@@ -1259,3 +1258,36 @@ print("Location of Python os module sources:")
 print(imp.find_module('os'))
 print("\nLocation of Python sys module sources:")
 print(imp.find_module('datetime'))
+
+#147.
+import ClearScreen
+def multiple(m, n):
+	return True if m % n == 0 else False
+
+print(multiple(20, 5))
+print(multiple(7, 2))
+
+#148.
+import ClearScreen
+def max_min(data):
+  l = data[0]
+  s = data[0]
+  for num in data:
+    if num> l:
+      l = num
+    elif num< s:
+        s = num
+  return l, s
+
+print(max_min([0, 10, 15, 40, -5, 42, 17, 28, 75]))
+"""
+#149.
+import ClearScreen
+def sum_of_cubes(n):
+ n -= 1
+ total = 0
+ while n > 0:
+   total += n * n * n
+   n -= 1
+ return total
+print("Sum of cubes smaller than the specified number: ",sum_of_cubes(3))
