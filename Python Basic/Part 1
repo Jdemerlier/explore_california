@@ -1280,7 +1280,7 @@ def max_min(data):
   return l, s
 
 print(max_min([0, 10, 15, 40, -5, 42, 17, 28, 75]))
-"""
+
 #149.
 import ClearScreen
 def sum_of_cubes(n):
@@ -1291,3 +1291,21 @@ def sum_of_cubes(n):
    n -= 1
  return total
 print("Sum of cubes smaller than the specified number: ",sum_of_cubes(3))
+"""
+
+#150.
+import ClearScreen
+def odd_product(nums):
+  for i in range(len(nums)):
+    for j in range(len(nums)):
+      if  i != j:
+        product = nums[i] * nums[j]
+        if product & 1:
+          return True
+  return False          
+dt1 = [2, 4, 6, 8]
+dt2 = [1, 6, 4, 7, 8]
+dt3 = [1, 3, 5, 7, 9]
+print(dt1, odd_product(dt1));
+print(dt2, odd_product(dt2));
+print(dt3, odd_product(dt3));
