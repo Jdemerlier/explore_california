@@ -1545,8 +1545,6 @@ def find_string(txt, str1):
 print(find_string("The quick brown fox jumps over the lazy dog", "the"))
 print(find_string("the quick brown fox jumps over the lazy dog", "the"))
 
-"""
-
 #100.
 import ClearScreen
 def sum_index_multiplier(nums):
@@ -1555,3 +1553,766 @@ def sum_index_multiplier(nums):
 print(sum_index_multiplier([1,2,3,4]))
 print(sum_index_multiplier([-1,-2,-3,-4]))
 print(sum_index_multiplier([]))
+
+#101.
+import ClearScreen
+def oldest_student(students):
+	return max(students, key=students.get)
+
+print(oldest_student({"Bernita Ahner": 12, "Kristie Marsico": 11, 
+                      "Sara Pardee": 14, "Fallon Fabiano": 11, 
+                      "Nidia Dominique": 15})) 
+print(oldest_student({"Nilda Woodside": 12, "Jackelyn Pineda": 12.2, 
+                      "Sofia Park": 12.4, "Joannie Archibald": 12.6, 
+                      "Becki Saunder": 12.5})) 
+
+#102.
+import ClearScreen
+def no_consecutive_letters (txt):
+    return txt[0] + ''.join(txt[i] for i in range(1,len(txt)) if txt[i] != txt[i-1])
+
+print(no_consecutive_letters("PPYYYTTHON"))
+print(no_consecutive_letters("PPyyythonnn"))
+print(no_consecutive_letters("Java"))
+print(no_consecutive_letters("PPPHHHPPP")) 
+
+#103.
+import ClearScreen
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+#2x + 3y = 4, 2x + 3y = 8
+print(parallel_lines([2,3,4], [2,3,8]))
+#2x + 3y = 4, 4x - 3y = 8
+print(parallel_lines([2,3,4], [4,-3,8])) 
+
+#104.
+import ClearScreen
+# Number in a Matrix: Maximum in its column and minimum in its row.
+def matrix_number(matrix):
+   result = set(map(min, matrix)) & set(map(max, zip(*matrix)))
+   return list(result)
+m1 = [[1,2], [2,3]]
+print("Original matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+m1 = [[1,2,3], [3,4,5]]
+print("\nOriginal matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+m1 = [[7,5,6], [3,4,4], [6,5,7]]
+print("\nOriginal matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+
+#105.
+import ClearScreen
+def Seq_Linear_Quadratic_Cubic(seq_nums):
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Linear Sequence"
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Quadratic Sequence"
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Cubic Sequence"
+
+nums = [0,2,4,6,8,10]
+print("Original Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [1,4,9,16,25]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [0,12,10,0,-12,-20]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+
+#106.
+import ClearScreen
+def is_pandigital_num(n):
+    return len(set(str(n))) == 10
+
+n = 1023456897
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023456798
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023457689
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023456789
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 102345679
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+
+#107.
+import ClearScreen
+def oddish_evenish_num(n):
+	return 'Oddish' if sum(map(int, str(n))) % 2 else 'Evenish'
+n = 120
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(120))
+n = 321
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(321))
+n = 43 
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(43))
+n = 4433
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(4433))
+n = 373
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(373))
+
+#108.
+import ClearScreen
+def check_last_digit(x, y, z):
+  return str(x+z)[-1] == str(y)[-1]
+print(check_last_digit(12, 26, 44))
+print(check_last_digit(145, 122, 1010))
+print(check_last_digit(0, 20, 40))
+print(check_last_digit(1, 22, 40))
+print(check_last_digit(145, 129, 104))
+
+#109.
+import ClearScreen
+def indices_in_list(nums_list, n):
+           return [idx for idx, i in enumerate(nums_list) if i == n]
+nums = [1,2,3,4,5,2]
+print("Original list of numbers:",nums)
+n = 2
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [3,1,2,3,4,5,6,3,3]
+print("\nOriginal list of numbers:",nums)
+n = 3
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [1,2,3,-4,5,2,-4]
+print("\nOriginal list of numbers:",nums)
+n = -4
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [1,2,3,4,5,2]
+print("\nOriginal list of numbers:",nums)
+n = 7
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+
+#110.
+import ClearScreen
+def unique_nums(nums):
+ return [i for i in nums if nums.count(i)==1]
+nums = [1,2,3,2,3,4,5]
+print("Original list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+nums = [1,2,3,2,4,5]
+print("\nOriginal list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+
+#111.
+import ClearScreen
+def is_circle_collision(circle1, circle2):
+   x1, y1, r1 = circle1
+   x2, y2, r2 = circle2
+   distance = ((x1-x2)**2 + (y1-y2)**2)**0.5
+   return distance <= r1 + r2
+print(is_circle_collision([1,2, 4], [1,2, 8]))
+print(is_circle_collision([0,0, 2], [10,10, 5]))
+
+#112.
+import ClearScreen
+def digit_distance_nums(n1, n2):
+         return sum(map(int,str(abs(n1-n2))))
+print(digit_distance_nums(123, 256))
+print(digit_distance_nums(23, 56))
+print(digit_distance_nums(1, 2))
+print(digit_distance_nums(24232, 45645))
+
+#113.
+import ClearScreen
+def reverse_even(txt):
+         return ' '.join(i[::-1] if not len(i)%2 else i for i in txt.split())
+print(reverse_even("The quick brown fox jumps over the lazy dog"))
+print(reverse_even("Python Exercises"))
+
+#114.
+import ClearScreen
+import string
+print("Alphabet from a-z:")
+for letter in string.ascii_lowercase:
+   print(letter, end =" ")
+print("\nAlphabet from A-Z:")
+for letter in string.ascii_uppercase:
+   print(letter, end =" ")
+
+#115.
+import ClearScreen
+nums = range(1,10)
+print(list(nums))
+print(list(map(str, nums)))
+
+#116.
+from operator import truediv
+from pickle import FALSE
+import ClearScreen
+import math
+def is_not_prime(n):
+    ans = False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            ans = True
+    return ans
+print("Nonprime numbers between 1 to 100:")
+for x in filter(is_not_prime, range(1, 101)):
+    print(x)
+
+#117.
+import ClearScreen
+import requests
+url = 'http://www.example.com/'
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh) Gecko/20100101 Firefox/38.0'}
+request = requests.get(url, headers=headers)
+print("Web page status: ", request)
+print("\nHTML code of the above web page:")
+if request.ok:
+    print(request.text)
+
+#118.
+import ClearScreen
+from multiprocessing import Process
+import os
+def info(title):
+    print(title)
+    print('module name:', __name__)
+    print('parent process:', os.getppid())
+    print('process id:', os.getpid())
+def f(name):
+    info('function f')
+    print('hello', name)
+if __name__ == '__main__':
+    info('Main line')
+    p = Process(target=f, args=('bob',))
+    p.start()
+    p.join()
+
+#119.
+import ClearScreen
+def gcd(p,q):
+# Create the gcd of two positive integers.
+    while q != 0:
+        p, q = q, p%q
+    return p
+def is_coprime(x, y):
+    return gcd(x, y) == 1
+print(is_coprime(17, 13))
+print(is_coprime(17, 21))
+print(is_coprime(15, 21))
+print(is_coprime(25, 45))
+
+#120.
+import ClearScreen
+def gcd(p,q):
+# Create the gcd of two positive integers.
+    while q != 0:
+        p, q = q, p%q
+    return p
+
+def is_coprime(x, y):
+    return gcd(x, y) == 1
+
+def phi_func(x):
+    if x == 1:
+        return 1
+    else:
+        n = [y for y in range(1,x) if is_coprime(x,y)]
+        return len(n)
+print(phi_func(10))
+print(phi_func(15))
+print(phi_func(33))
+
+#121.
+import ClearScreen
+def test(str):
+	return str.translate(str.maketrans('PTSHA', '90168'))
+str = "PHP"
+print("Original string: ",str)
+print("Coded string: ",test(str))
+str = "JAVASCRIPT"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+
+#122.
+import ClearScreen
+def test(str):
+    return str.islower() or str.isupper()
+
+str = "PHP"
+print("Original string: ",str)
+print("Coded string: ",test(str))
+str = "javascript"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+str = "JavaScript"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+
+#123.
+import ClearScreen
+def test(str):
+    return str if len(str) < 3 else str[1:-1]
+str = "PHP"
+print("Original string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+str = "Python"
+print("\nOriginal string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+str = "JavaScript"
+print("\nOriginal string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+
+#124.
+import ClearScreen
+def test(str1):
+    return any(c1 == c2 for c1, c2 in zip(str1, str1[1:]))
+str = "PHP"
+print("Original string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+str = "PHHP"
+print("\nOriginal string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+str = "PHPP"
+print("\nOriginal string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+
+#125.
+import ClearScreen
+def test(str1):
+    return str1[::-1].lower()
+str = "PHP"
+print("Original string:",str)
+print("Reverse the said string in lower case:",test(str))
+str = "JavaScript"
+print("\nOriginal string:",str)
+print("Reverse the said string in lower case:",test(str))
+str = "PHPP"
+print("\nOriginal string:",str)
+print("Reverse the said string in lower case:",test(str)) 
+
+#test
+import ClearScreen
+name = input ("Wat is jouw naam? ")
+def reverse(Name):
+    return Name[::-1].lower()
+print("Originele naam:",name)
+print("Uw naam achterwaarts is:",reverse(name))
+
+#126.
+def test(str1):
+    return ''.join(sorted(str1))
+
+str1 = "PHP"
+print("Original string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1))
+str1 = "javascript"
+print("\nOriginal string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1))
+str1 = "python"
+print("\nOriginal string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1)) 
+
+#127.
+import ClearScreen
+import array as arr
+def test(nums):
+    return sum(nums) % len(nums) == 0
+array_num = arr.array('i', [1, 3, 5, 7, 9])
+print("Original array:")
+for i in range(len(array_num)):    
+    print(array_num[i], end=' ')
+print("\nCheck the average value of the elements of the said array is a whole number or not:\n",test(array_num))
+array_num = arr.array('i', [2, 4, 2, 6, 4, 8])
+print("\nOriginal array:")
+for i in range(len(array_num)):    
+    print(array_num[i], end=' ')
+print("\nCheck the average value of the elements of the said array is a whole number or not:\n",test(array_num)) 
+
+#128.
+import ClearScreen
+import re
+def test(text):
+    return re.sub(r'[aeiouéè]+', '', text, flags=re.IGNORECASE)
+text = "Jurgen";
+print("Original string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+text = "Aurélie"
+print("\nOriginal string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+text = "Tibe"
+print("\nOriginal string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+text = "Liene"
+print("\nOriginal string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+
+#129.
+import ClearScreen
+def test(text):
+   return [x for x in range(len(text)) if text[x].islower()]
+text = "Python";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+text = "JavaScript";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+text = "PHP";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+
+#130.
+import ClearScreen
+from datetime import date
+def test(month, year): 
+    return str(date(year,month,13).strftime("%A")=='Saturday')
+
+month = 11;
+year = 2022;            
+print("Month No.: ", month, " Year: ", year);
+print("Check whether the said month and year contains a Saturday 13th.: " + test(month, year));
+month = 6;
+year = 2022;            
+print("\nMonth No.: ", month, " Year: ", year);
+print("Check whether the said month and year contains a Saturday 13th.: " + test(month, year)); 
+month = 2;
+year = 1982;            
+print("\nMonth No.: ", month, " Year: ", year);
+print("Check whether the said month and year contains a Saturday 13th.: " + test(month, year)); 
+
+#131.
+import ClearScreen
+def test(num):
+    ones =  bin(num). replace("0b", "").count('1')
+    zeros = bin(num). replace("0b", "").count('0')
+    return "Number of zeros: " + str(zeros) + ", Number of ones: " + str(ones);
+
+n = 12; 
+print("Original number: ",n);
+print("Number of ones and zeros in the binary representation of the said number:");
+print(test(n));
+n = 1234;
+print("\nOriginal number: ",n);
+print("Number of ones and zeros in the binary representation of the said number:");
+print(test(n));
+
+#132.
+import ClearScreen
+#Source https://bit.ly/3w492zp
+
+from functools import reduce
+
+def test(n):    
+    return set(reduce(list.__add__, 
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
+'''
+sqrt(x) * sqrt(x) = x. So if the two factors are the same, they're both 
+the square root. If you make one factor bigger, you have to make the other 
+factor smaller. This means that one of the two will always be less than or 
+equal to sqrt(x), so you only have to search up to that point to find one 
+of the two matching factors. You can then use x / fac1 to get fac2.
+
+The reduce(list.__add__, ...) is taking the little lists of [fac1, fac2] 
+and joining them together in one long list.
+
+The [i, n/i] for i in range(1, int(sqrt(n)) + 1) if n % i == 0 returns 
+a pair of factors if the remainder when you divide n by the smaller one 
+is zero (it doesn't need to check the larger one too; it just gets that 
+by dividing n by the smaller one.)
+
+The set(...) on the outside is getting rid of duplicates, which only 
+happens for perfect squares. For n = 4, this will return 2 twice, so 
+set gets rid of one of them.
+'''
+n = 1
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+n = 12
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+n = 100
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+
+#133.
+import ClearScreen
+def test(lst):
+  pos_sum = 0
+  neg_sum = 0
+  for n in lst:
+    if n > 0:
+      pos_sum += n
+    elif n < 0:
+      neg_sum += n
+  return max(pos_sum, neg_sum, key=abs)
+
+nums = { 0, -10, -11, -12, -13, -14, 15, 16, 17, 18, 19, 20 };
+print("Original array elements:");
+print(nums)
+print("Largest sum - Positive/Negative numbers of the said array: ", test(nums));
+nums = { -11, -22, -44, 0, 3, 4 , 5, 9 };
+print("\nOriginal array elements:");
+print(nums)
+print("Largest sum - Positive/Negative numbers of the said array: ", test(nums));
+
+#134.
+import ClearScreen
+def test(txt):
+    result_str = ""
+    s = True
+    for i in txt:
+        result_str += i.upper() if s else i.lower()
+        if i.isalpha():
+            s = not s
+    return result_str
+str1 = "Python Exercises";
+print("Original string: ", str1);
+print("After alternating the case of each letter of the said string:")
+print(test(str1))
+str1 = "C# is used to develop web apps, desktop apps, mobile apps, games and much more.";
+print("\nOriginal string: ", str1);
+print("After alternating the case of each letter of the said string:")
+print(test(str1))  
+
+#135.
+import ClearScreen
+from functools import reduce
+def test(nums):
+    return reduce(lambda x,y:lcm(x,y),nums)
+def gcd(a, b):
+    while b:
+        a, b = b, a%b
+    return a
+def lcm(a, b):
+    return a*b // gcd(a, b)
+nums = [ 4, 6, 8 ]
+print("Original list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+nums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+print("\nOriginal list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+nums = [ 48, 72, 108  ]
+print("\nOriginal list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+
+#136.
+import ClearScreen
+def test(txt):
+	return ' '.join(i[::-1] if len(i)%2 else i for i in txt.split())
+ 
+text = "The quick brown fox jumps over the lazy dog"
+print("Original string:")
+print(text)
+print("Reverse all the words of the said string which have odd length:")
+print(test(text))
+text = "Python Exercises"
+print("\nOriginal string:")
+print(text)
+print("Reverse all the words of the said string which have odd length:")
+print(test(text))
+
+#137.
+import ClearScreen
+def test(str1, str2):
+    for i in range(len(str2)):
+        while str2[i:] in str1 and str2[-1]==str1[-1]:
+            return str2[i:]
+    return ""
+
+str1 = "running";
+str2 = "ruminating";
+print("Original strings: " + str1 + "  " + str2);
+print("Common ending between said two strings: " + test(str1, str2));
+str1 = "thisisatest";
+str2 = "testing123testing";
+print("\nOriginal strings: " + str1 + "  " + str2);
+print("Common ending between said two strings: " + test(str1, str2));
+
+#138.
+import ClearScreen
+def test(n):
+    return int(bin(n)[::-1][:-2], 2)
+
+n = 13
+print("Original number: ", n);
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n));
+n = 145
+print("Original number: ", n);
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n));
+n = 1342
+print("Original number: ", n);
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n));
+
+#139.
+import ClearScreen
+def test(n):
+    x = n
+    y = n
+    while True:
+        if str(x) == str(x)[::-1]:
+            return x
+        x -=  1
+        if str(y) == str(y)[::-1]:
+            return y
+        y += 1
+    return int(bin(n)[::-1][:-2], 2)
+
+n = 120;
+print("Original number: ", n);
+print("Closest Palindrome number of the said number: ",test(n));
+n = 321;
+print("Original number: ", n);
+print("Closest Palindrome number of the said number: ",test(n));
+n = 43;
+print("Original number: ", n);
+print("Closest Palindrome number of the said number: ",test(n));
+n = 1234;
+print("Original number: ", n);
+print("Closest Palindrome number of the said number: ",test(n));
+
+#140.
+import ClearScreen
+nums = ['0.49', '0.54', '0.54', '0.54', '0.54', '0.54', '0.55', '0.54', '0.54',  '0.54', 
+ '0.55', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54']
+print("Original list:")
+print(nums)
+print("\nList of Floats:")
+nums_of_floats = []
+for item in nums:
+    nums_of_floats.append(float(item))
+print(nums_of_floats)
+
+#141.
+import ClearScreen
+def get_domain_name(ip_address):
+  import socket
+  result=socket.gethostbyaddr(ip_address)
+  return list(result)[0]
+print("Domain name using PTR DNS:")
+print(get_domain_name("8.8.8.8"))
+print(get_domain_name("13.251.106.90"))
+print(get_domain_name("8.8.4.4"))
+print(get_domain_name("23.23.212.126"))
+
+#142.
+import ClearScreen
+def test(str1):
+    while '01' in str1:
+        str1 = str1.replace('01', '')
+    return len(str1) == 0
+
+str1 = "01010101"
+print("Original sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "000111000111"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00011100011"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+
+#143.
+import ClearScreen
+print("Smiling face with heart-eyes:")
+print("\U0001F60D")
+print("Unamused face:")
+print("\U0001F612")
+print("Beaming face with smiling eyes:")
+print("\U0001F601")
+print("Grinning face with sweat:")
+print("\U0001F605")
+print("Face with tears of joy:")
+print("\U0001F602")
+print("Slightly smiling face:")
+print("\U0001F642")
+print("Smiling face with halo:")
+print("\U0001F607")
+print("Zipper-mouth face:")
+print("\U0001F910")
+print("Grinning face:")
+print("\U0001F600")
+print("Rolling on the floor laughing:")
+print("\U0001F923")
+
+#144.
+import ClearScreen
+language = "Python"
+version = 3.6
+print('Language: ' + language + ',' + ' Version: ' + str(version))
+"""
+
+#145.
+import ClearScreen
+def Largest_Smallest_digit(n):
+   largest_digit = 0
+   smallest_digit = 9
+   while (n):
+       digit = n % 10
+       # largest digit
+       largest_digit = max(digit, largest_digit)
+       # smallest digit
+       smallest_digit = min(digit, smallest_digit)
+       n = n // 10
+   return largest_digit, smallest_digit
+n = 9387422
+print("Original Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
+n = 500
+print("\nOriginal Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
+n = 231548
+print("\nOriginal Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
