@@ -1365,7 +1365,193 @@ print(check_isogram("w3resource"))
 print(check_isogram("w3r"))
 print(check_isogram("Python"))
 print(check_isogram("Java"))
-"""
 
 #86.
 import ClearScreen
+def test_three_equal(x, y, z):
+  result= set([x, y, z])
+  if len(result)==3:
+    return 0
+  else:
+    return (4 - len(result))
+
+print(test_three_equal(1, 1, 1))
+print(test_three_equal(1, 2, 2))
+print(test_three_equal(-1, -2, -3))
+print(test_three_equal(-1, -1, -1))
+
+#87.
+import ClearScreen
+def is_valid_emp_code(emp_code):
+  return len(emp_code) in [8, 12] and emp_code.isdigit()
+print(is_valid_emp_code('12345678'))
+print(is_valid_emp_code('1234567j'))
+print(is_valid_emp_code('12345678j'))
+print(is_valid_emp_code('123456789123'))
+print(is_valid_emp_code('123456abcdef'))
+
+#88.
+import ClearScreen
+def string_letter_check(str1, str2):
+  return all([char in str1.lower() for char in str2.lower()])
+print(string_letter_check("python", "ypth"))
+print(string_letter_check("python", "ypths"))
+print(string_letter_check("python", "ypthon"))
+print(string_letter_check("123456", "01234"))
+print(string_letter_check("123456", "1234"))
+
+#89.
+import ClearScreen
+def sum_three_smallest_nums(lst):
+	return sum(sorted([x for x in lst if x > 0])[:3])
+nums = [10, 20, 30, 40, 50, 60, 7]
+print("Original list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+nums = [1, 2, 3, 4, 5]
+print("\nOriginal list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+nums = [0, 1, 2, 3, 4, 5]
+print("\nOriginal list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+
+#90.
+import ClearScreen
+def new_string(str1):
+ return '*'*(len(str1)-5) + str1[-5:]
+text = "kdi39323swe"
+print("Original String: ",text)
+print("new string: ",new_string(text))
+text = "12345abcdef"
+print("\nOriginal String: ",text)
+print("new string: ",new_string(text))
+text = "12345"
+print("\nOriginal String: ",text)
+print("new string: ",new_string(text))
+
+#91.
+import ClearScreen
+def num_of_args(*args):
+	return(len(args))
+print(num_of_args())
+print(num_of_args(1))
+print(num_of_args(1, 2))
+print(num_of_args(1, 2, 3))
+print(num_of_args(1, 2, 3, 4))
+print(num_of_args([1, 2, 3, 4]))
+
+#92.
+import ClearScreen
+def nums_cumulative_sum(nums_list):
+  return [sum(nums_list[:i+1]) for i in range(len(nums_list))]
+
+print(nums_cumulative_sum([10, 20, 30, 40, 50, 60, 7]))
+print(nums_cumulative_sum([1, 2, 3, 4, 5]))
+print(nums_cumulative_sum([0, 1, 2, 3, 4, 5]))
+
+#93.
+import ClearScreen
+def middle_char(txt):
+  return txt[(len(txt)-1)//2:(len(txt)+2)//2]
+text = "Python"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+text = "PHP"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+text = "Java"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+
+#94.
+import ClearScreen
+def adjacent_num_product(list_nums):
+   return max(a*b for a, b in zip(list_nums, list_nums[1:]))
+nums = [1,2,3,4,5,6]
+print("Original list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+nums = [2,3]
+print("\nOriginal list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+
+#95.
+import ClearScreen
+def odd_even_position(nums):
+           return all(nums[i]%2==i%2 for i in range(len(nums)))
+nums = [2, 1, 4, 3, 6, 7, 6, 3]
+print("Original list of numbers:", nums)
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+nums = [2, 1, 4, 3, 6, 7, 6, 4]
+print("\nOriginal list of numbers:", nums)
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+print("\nOriginal list of numbers:", nums)
+nums = [4, 1, 2]
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+
+#96.
+import ClearScreen
+def is_narcissistic_num(num):
+	return num == sum([int(x) ** len(str(num)) for x in str(num)])
+
+print(is_narcissistic_num(153))
+print(is_narcissistic_num(370))
+print(is_narcissistic_num(407))
+print(is_narcissistic_num(409))
+print(is_narcissistic_num(1634))
+print(is_narcissistic_num(8208))
+print(is_narcissistic_num(9474))
+print(is_narcissistic_num(9475))
+
+#97.
+import ClearScreen
+def highest_lowest_num(str1):
+ num_list = list(map(int, str1.split()))
+ return max(num_list), min(num_list)
+text = "1 4 5 77 9 0"
+print("Original string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+text = "-1 -4 -5 -77 -9 0"
+print("\nOriginal string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+text = "0 0"
+print("\nOriginal string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+
+
+#98.
+import ClearScreen
+def increasing_trend(nums):
+    if (sorted(nums) == nums):
+        return True
+    else:
+        return False
+
+print(increasing_trend([1,2,3,4]))
+print(increasing_trend([1,2,5,3,4]))
+print(increasing_trend([-1,-2,-3,-4]))
+print(increasing_trend([-4,-3,-2,-1]))
+print(increasing_trend([1,2,3,4,0]))
+
+#99.
+import ClearScreen
+def find_string(txt, str1):
+	return txt.find(str1, txt.find(str1)+1)
+
+print(find_string("The quick brown fox jumps over the lazy dog", "the"))
+print(find_string("the quick brown fox jumps over the lazy dog", "the"))
+
+"""
+
+#100.
+import ClearScreen
+def sum_index_multiplier(nums):
+	return sum(j*i for i, j in enumerate(nums))
+
+print(sum_index_multiplier([1,2,3,4]))
+print(sum_index_multiplier([-1,-2,-3,-4]))
+print(sum_index_multiplier([]))
