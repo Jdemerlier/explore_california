@@ -950,7 +950,6 @@ for z in range(no_sides):
     cord_data.append(x)
     cord_data.append(y)
 print("\nArea of the Polygon:",poly_area(cord_data))
-"""
 
 #60.
 import ClearScreen
@@ -960,3 +959,353 @@ yy = yy.replace(",", " ")
 yy = yy.replace(".", " ")
 print("3 to 6 characters length of words:")
 print(*[y for y in yy.split() if 3 <= len(y) <= 6])
+
+#61.
+
+import ClearScreen
+import sys
+print("Input the numbers (ctrl+d to exit):")
+nums = [list(map(int, l.split(","))) for l in sys.stdin]
+mvv = nums[0]
+
+for i in range(1, (len(nums)+1)//2):
+    rvv = [0]*(i+1)
+    for j in range(i):
+        rvv[j] = max(rvv[j], mvv[j]+nums[i][j])
+        rvv[j+1] = max(rvv[j+1], mvv[j]+nums[i][j+1])
+    mvv = rvv
+
+for i in range((len(nums)+1)//2, len(nums)):
+    rvv = [0]*(len(mvv)-1)
+    for j in range(len(rvv)):
+        rvv[j] = max(mvv[j], mvv[j+1]) + nums[i][j]
+    mvv = rvv
+print("Maximum value of the sum of integers passing according to the rule on one line.") 
+print(mvv[0])
+
+#63.
+import ClearScreen
+from collections import Counter
+print("Input a positive integer: (ctrl+d to exit)") 
+pair_dict = Counter()
+for i in range(2001):
+  pair_dict[i] = min(i, 2000 - i) + 1 
+ 
+while True:
+  try:
+    n = int(input())
+    ans = 0
+    for i in range(n + 1):
+      ans += pair_dict[i] * pair_dict[n - i]
+    print("Number of combinations of a,b,c,d:",ans) 
+  except EOFError:
+    break
+
+#64.
+import ClearScreen
+def check_sum(nums, k):   
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == k:
+                return True
+    return False
+print(check_sum([12, 5, 0, 5], 10))
+print(check_sum([20, 20, 4, 5], 40))
+print(check_sum([1, -1], 0))
+print(check_sum([1, 1, 0], 0))
+
+#65.
+import ClearScreen
+def longest_word_sequence(s, d):
+	long_word = ""
+	
+	for word in d: 
+		temp_word = ''	
+		j = 0
+		for letter in word: 
+
+			for i in range(j, len(s)): 
+
+				if letter == s[i]: 
+					temp_word += letter 
+					j = i                  
+					break
+				else:				
+					continue        
+
+		if (temp_word) == word and len(long_word) < len(temp_word):
+			long_word = temp_word
+
+		else:
+			continue
+	return long_word
+
+
+print(longest_word_sequence("Green", {"Gn", "Gren", "ree", "en"}))
+
+#66.
+import ClearScreen
+def happy_numbers(n):
+    past = set()			
+    while n != 1:
+        n = sum(int(i)**2 for i in str(n))
+        if n in past:
+            return False
+        past.add(n)
+    return True
+print([x for x in range(500) if happy_numbers(x)][:10])
+
+#67.
+import ClearScreen
+def happy_numbers(n):
+    past = set()			
+    while n != 1:
+        n = sum(int(i)**2 for i in str(n))
+        if n in past:
+            return False
+        past.add(n)
+    return True
+print([x for x in range(500) if happy_numbers(x)][:10])
+
+#68.
+import ClearScreen
+def count_Primes_nums(n):
+    ctr = 0
+    
+    for num in range(n):
+        if num <= 1:
+            continue
+        for i in range(2, num):
+            if (num % i) == 0:
+                break
+        else:
+            ctr += 1
+
+    return ctr
+
+print(count_Primes_nums(10))
+print(count_Primes_nums(100))
+
+#69.
+import ClearScreen
+def isIsomorphic(str1, str2):          
+    dict_str1 = {}
+    dict_str2 = {}
+    
+    for i, value in enumerate(str1):
+        dict_str1[value] = dict_str1.get(value, []) + [i]
+            
+    for j, value in enumerate(str2):
+        dict_str2[value] = dict_str2.get(value, []) + [j]
+    
+    if sorted(dict_str1.values()) == sorted(dict_str2.values()):
+        return True
+    else:
+        return False
+
+print(isIsomorphic("foo", "bar"));         
+print(isIsomorphic("bar", "foo"));      
+print(isIsomorphic("paper", "title"));   
+print(isIsomorphic("title", "paper"));
+print(isIsomorphic("apple", "orange"));
+print(isIsomorphic("aa", "ab"));
+print(isIsomorphic("ab", "aa"));
+
+#70.
+import ClearScreen
+def longest_Common_Prefix(str1):
+    
+    if not str1:
+        return ""
+
+    short_str = min(str1,key=len)
+
+    for i, char in enumerate(short_str):
+        for other in str1:
+            if other[i] != char:
+                return short_str[:i]
+
+    return short_str 
+
+print(longest_Common_Prefix(["abcdefgh","abcefgh"]))
+print(longest_Common_Prefix(["w3r","w3resource"]))
+print(longest_Common_Prefix(["Python","PHP", "Perl"]))
+print(longest_Common_Prefix(["Python","PHP", "Java"]))
+
+#71.
+import ClearScreen
+def reverse_vowels(str1):
+	vowels = ""
+	for char in str1:
+		if char in "aeiouAEIOU":
+			vowels += char
+	result_string = ""
+	for char in str1:
+		if char in "aeiouAEIOU":
+			result_string += vowels[-1]
+			vowels = vowels[:-1]
+		else:
+			result_string += char
+	return result_string
+print(reverse_vowels("w3resource"))
+print(reverse_vowels("Python"))
+print(reverse_vowels("Perl"))
+print(reverse_vowels("USA"))
+
+#72.
+import ClearScreen
+def is_Palindrome(n):
+    return str(n) == str(n)[::-1]
+print(is_Palindrome(100))
+print(is_Palindrome(252))
+print(is_Palindrome(-838)) 
+
+#73.
+import ClearScreen
+def remove_duplicates(nums):
+    for i in range (len(nums)-1, 0, -1):
+        if nums[i] == nums[i-1]:
+            del nums[i-1]
+    return len(nums)
+
+print(remove_duplicates([0,0,1,1,2,2,3,3,4,4,4]))
+print(remove_duplicates([1, 2, 2, 3, 4, 4]))
+
+
+#74.
+import ClearScreen
+def buy_and_sell(stock_price):
+    max_profit_val, current_max_val = 0, 0 
+    for price in reversed(stock_price):                       
+        current_max_val = max(current_max_val, price)          
+        potential_profit = current_max_val - price          
+        max_profit_val = max(potential_profit, max_profit_val)
+
+    return max_profit_val
+
+print(buy_and_sell([8, 10, 7, 5, 7, 15]))
+print(buy_and_sell([1, 2, 8, 1]))
+print(buy_and_sell([]))
+
+#75.
+import ClearScreen
+def remove_element(array_nums, val):
+    i = 0
+    while i < len(array_nums):
+        if array_nums[i] == val:
+            array_nums.remove(array_nums[i])
+
+        else:
+            i += 1
+
+    return len(array_nums)
+print(remove_element([1, 2, 3, 4, 5, 6, 7, 5], 5))
+print(remove_element([10,10,10,10,10], 10)) 
+print(remove_element([10,10,10,10,10], 20)) 
+print(remove_element([], 1))
+
+#76.
+import ClearScreen
+def search_Range(array_nums, target_val):
+  result_arra = []
+  start_pos = 0
+  end_pos = 0
+  for i in range(len(array_nums)):
+      if target_val == array_nums[i] and start_pos == -1:
+          start_pos = i
+          end_pos = i
+      elif target_val == array_nums[i] and start_pos != -1:
+          end_pos = i
+  result_arra.append(start_pos)
+  result_arra.append(end_pos)
+  return result_arra
+print(search_Range([5, 7, 7, 8, 8, 8], 8))
+print(search_Range([1, 3, 6, 9, 13, 14], 4))
+print(search_Range([5, 7, 7, 8, 10], 8))
+
+#77.
+import ClearScreen
+def max_profit(stock_price):
+	max_profit_amt = 0
+
+	for i in range(len(stock_price)):
+		profit_amt = 0
+		for j in range(i+1, len(stock_price)):
+			profit_amt = stock_price[j] - stock_price[i]
+			if  profit_amt > max_profit_amt:
+				max_profit_amt = profit_amt
+	return max_profit_amt
+print(max_profit([224, 236, 247, 258, 259, 225]))
+
+#78.
+import ClearScreen
+def print_matrix(nums):
+    flag = True 
+    
+    for line in nums:
+
+        if flag == True: 
+            i = 0
+            while i < len(line):
+                print(line[i])
+                i += 1
+            flag = False
+
+        else: 
+            i = -1
+            while i > -1 * len(line) - 1:
+                print(line[i])
+                i = i - 1
+            flag = True
+print_matrix([[1, 2, 3, 4],
+              [5, 6, 7, 8],
+              [0, 6, 2, 8],
+              [2, 3, 0, 2]])
+
+#79.
+import ClearScreen
+def largest_product_of_three(nums):
+    max_val = nums[1]
+
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            for k in range(j+1, len(nums)):
+                max_val = max(nums[i] * nums[j] * nums[k], max_val)
+                
+    return max_val
+    
+print(largest_product_of_three([-10, -20, 20, 1]))
+print(largest_product_of_three([-1, -1, 4, 2, 1]))
+print(largest_product_of_three([1, 2, 3, 4, 5, 6]))
+
+#80.
+import ClearScreen
+def first_missing_number(nums):
+    if len(nums) == 0:
+        return 1
+        
+    nums.sort()
+    smallest_int_num = 0
+    
+    for i in range(len(nums) - 1):
+
+        if nums[i] <= 0 or nums[i] == nums[i + 1]:
+            continue
+        else:
+            if nums[i + 1] - nums[i] != 1:
+                smallest_int_num = nums[i] + 1
+                return smallest_int_num    
+    if smallest_int_num == 0:
+        smallest_int_num = nums[-1] + 1
+    return smallest_int_num
+
+print(first_missing_number([2, 3, 7, 6, 8, -1, -10, 15, 16])) 
+print(first_missing_number([1, 2, 4, -7, 6, 8, 1, -10, 15]))
+print(first_missing_number([1, 2, 3, 4, 5, 6, 7]))
+print(first_missing_number([-2, -3, -1, 1, 2, 3]))
+"""
+
+#81.
+import ClearScreen
+import random
+print(random.sample([i for i in range(1,100) if i%2==0], 10))
