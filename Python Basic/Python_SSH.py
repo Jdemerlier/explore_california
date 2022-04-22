@@ -19,6 +19,6 @@ while True:
   _stdin, _stdout, _stderr = client.exec_command(commando)
   print(_stdout.read().decode())
   client.close()
-  input ("stoppen? j/n: ")
+  input ("stoppen? j voor ja, enter om verder te gaan : ")
   if input == "j":
     break
