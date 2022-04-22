@@ -9,7 +9,9 @@ username = 'admin'
 password = 'wago'
 
 while True:
-  commando = input("Commando: ")
+  print("WAGO Linux Terminal on PFC200V3-4E4BD9.")  
+  print ("root@PFC200V3-4E4BD9:~")  
+  commando = input("Welk Commando wil je uitvoeren?: ")
 
   client = paramiko.client.SSHClient()
   client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -17,6 +19,6 @@ while True:
   _stdin, _stdout, _stderr = client.exec_command(commando)
   print(_stdout.read().decode())
   client.close()
-  input ("stop: ")
-  if input == "q":
+  input ("stoppen? j/n: ")
+  if input == "j":
     break
