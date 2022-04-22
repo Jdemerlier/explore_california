@@ -1,4 +1,6 @@
-import ClearScreen
+import os
+import time
+os.system("cls")
 import paramiko
 from paramiko import SSHClient, AutoAddPolicy
 from sys import stderr, stdin, stdout
@@ -10,7 +12,8 @@ password = 'wago'
 
 while True:
   print("WAGO Linux Terminal on PFC200V3-4E4BD9.")  
-  print ("root@PFC200V3-4E4BD9:~")  
+  print ("root@PFC200V3-4E4BD9:~")
+  print("\n")  
   commando = input("Welk Commando wil je uitvoeren?: ")
 
   client = paramiko.client.SSHClient()
@@ -20,5 +23,6 @@ while True:
   print(_stdout.read().decode())
   client.close()
   input ("stoppen? j voor ja, enter om verder te gaan : ")
+  os.system("cls")
   if input == "j":
     break
